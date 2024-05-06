@@ -105,7 +105,7 @@ const delrest = async (req, res) => {
   try {
     const user = await User.findOne({ username });
     const del = await restaurant.findOneAndDelete({ user: user._id });
-    user.isAdmin = true;
+    user.isAdmin = false;
 
     if (!del) return res.status(500).json({ message: "Interval server error" });
     await user.save();
